@@ -7,6 +7,8 @@ import com.codegym.module4.service.country.CountryService;
 import com.sun.org.apache.bcel.internal.generic.MONITORENTER;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -40,7 +42,11 @@ public class CityInfoController {
     }
 
     @PostMapping(value = "/create")
-    public ModelAndView saveCityInfo(CityInfo cityInfo){
+    public ModelAndView saveCityInfo(@Validated CityInfo cityInfo, BindingResult bindingResult){
+        if(bindingResult.hasFieldErrors()){
+            ModelAndView modelAndView = new ModelAndView("/cityInfo/create");
+            return modelAndView;
+        }
         cityInfoService.save(cityInfo);
         ModelAndView modelAndView = new ModelAndView("/cityInfo/create");
         modelAndView.addObject("cityInfo", new CityInfo());
@@ -56,7 +62,11 @@ public class CityInfoController {
     }
 
     @PostMapping("/edit")
-    public ModelAndView updateCityInfo(CityInfo cityInfo){
+    public ModelAndView updateCityInfo(@Validated CityInfo cityInfo, BindingResult bindingResult){
+        if (bindingResult.hasFieldErrors()){
+            ModelAndView modelAndView = new ModelAndView("/cityInfo/edit");
+            return modelAndView;
+        }
         cityInfoService.save(cityInfo);
         ModelAndView modelAndView = new ModelAndView("/cityInfo/edit");
         modelAndView.addObject("cityInfo", cityInfo);

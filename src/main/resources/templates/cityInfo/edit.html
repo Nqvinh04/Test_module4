@@ -19,7 +19,7 @@
         <div class="mb-3">
             <label>Tên: </label>
             <input type="text" th:field="*{cityName}" class="form-control"/>
-            <p th:if="${#fields.hasErrors('cityName')}" th:errors="*{cityName}">Phone Error</p>
+            <p th:if="${#fields.hasErrors('cityName')}" th:errors="*{cityName}">CityName Error</p>
         </div>
 
 
@@ -38,26 +38,26 @@
         <div class="mb-3">
             <label>Diện tích:</label>
             <input type="text" th:field="*{acreage}" class="form-control"/>
-            <p th:if="${#fields.hasErrors('acreage')}" th:errors="*{acreage}">Email Error</p>
+            <p th:if="${#fields.hasErrors('acreage')}" th:errors="*{acreage}">Acreage Error</p>
         </div>
 
 
         <div class="mb-3">
             <label>Dân Số:</label>
             <input type="text" th:field="*{population}" class="form-control"/>
-            <p th:if="${#fields.hasErrors('population')}" th:errors="*{population}">Address Error</p>
+            <p th:if="${#fields.hasErrors('population')}" th:errors="*{population}">Population Error</p>
         </div>
 
         <div class="mb-3">
             <label>GDP:</label>
             <input type="text" th:field="*{gdp}" class="form-control"/>
-            <p th:if="${#fields.hasErrors('gdp')}" th:errors="*{gdp}">Address Error</p>
+            <p th:if="${#fields.hasErrors('gdp')}" th:errors="*{gdp}">Gdp Error</p>
         </div>
 
         <div class="mb-3">
             <label>Giới thiệu:</label>
             <input type="" th:field="*{description}" class="form-control"/>
-            <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Address Error</p>
+            <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Description Error</p>
         </div>
 
         <button type="submit" class="btn btn-success btn-lg btn-primary">Cập Nhật</button>
