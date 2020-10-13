@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thành phố</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<a href="/cityinfo/" class="btn btn-success" role="button" style="float: right">Xem danh sách thành phố</a>
+<th:block th:each="cityinfo: ${cityInfo}">
+    <h2>Thành Phố: <span th:text="${cityInfo.cityName}"></span></h2>
+    <label for="id"></label><input th:type="hidden" id="id" th:field="*{cityInfo.cityId}" />
+    <div>
+        <label for="cityName">Tên:</label>
+        <label id="cityName" th:text="${cityInfo.cityName}" ></label>
+    </div>
+    <div >
+        <label for="countryName">Quốc gia:</label>
+        <label id="countryName" th:text="${cityInfo.countryName.countryName}" ></label>
+    </div>
+    <div >
+        <label for="acreage">Diện tích:</label>
+        <label id="acreage" th:text="${cityInfo.acreage}" ></label>
+    </div>
+    <div >
+        <label for="population">Dân số:</label>
+        <label id="population" th:text="${cityInfo.population}" ></label>
+    </div>
+    <div >
+        <label for="gdp">GDP:</label>
+        <label id="gdp" th:text="${cityInfo.gdp}" ></label>
+    </div>
+    <div >
+        <label for="description">Giới thiệu:</label>
+        <label id="description" th:text="${cityInfo.description}" ></label>
+    </div>
+    <td><a th:href="@{/cityinfo/edit/__${cityInfo.cityId}__}" class="btn btn-success" role="button">Chỉnh Sửa</a></td>
+    <td><a th:href="@{/cityinfo/delete/__${cityInfo.cityId}__}" class="btn btn-success" role="button"
+           onclick="return confirm('Are you sure?')">Xóa</a></td>
+</th:block>
+</body>
+</html>

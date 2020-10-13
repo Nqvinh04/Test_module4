@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tạo mới</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<h2>Thêm thành phố</h2>
+<div class="col-md-8 order-md-1">
+    <form class="needs-validation" th:action="@{/cityinfo/create}" th:object="${cityInfo}" method="post">
+
+        <div class="mb-3">
+            <label>Tên: </label>
+            <input type="text" th:field="*{cityName}" class="form-control"/>
+            <p th:if="${#fields.hasErrors('cityName')}" th:errors="*{cityName}">Phone Error</p>
+        </div>
+
+
+        <div class="mb-3">
+            <label>Quốc Gia</label>
+            <select id="categories" class="form-control" th:field="*{countryName}">
+                <option th:each="c : ${countrys}"
+                        th:value="${c.countryId}"
+                        th:text="${c.countryName}">
+                </option>
+            </select>
+        </div>
+
+
+
+        <div class="mb-3">
+            <label>Diện tích:</label>
+            <input type="text" th:field="*{acreage}" class="form-control"/>
+            <p th:if="${#fields.hasErrors('acreage')}" th:errors="*{acreage}">Email Error</p>
+        </div>
+
+
+        <div class="mb-3">
+            <label>Dân Số:</label>
+            <input type="text" th:field="*{population}" class="form-control"/>
+            <p th:if="${#fields.hasErrors('population')}" th:errors="*{population}">Address Error</p>
+        </div>
+
+        <div class="mb-3">
+            <label>GDP:</label>
+            <input type="text" th:field="*{gdp}" class="form-control"/>
+            <p th:if="${#fields.hasErrors('gdp')}" th:errors="*{gdp}">Address Error</p>
+        </div>
+
+        <div class="mb-3">
+            <label>Giới thiệu:</label>
+            <input type="text" th:field="*{description}" class="form-control"/>
+            <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Address Error</p>
+        </div>
+
+        <button type="submit" class="btn btn-success btn-lg btn-primary">Thêm thành phố</button>
+        <a href="/cityinfo/" class="btn btn-success" role="button" style="float: right">Thoát</a>
+    </form>
+
+</div>
+</body>
+</html>

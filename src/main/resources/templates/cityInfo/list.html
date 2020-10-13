@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<a href="/cityinfo/create" class="btn btn-success" role="button" style="float: left">Thêm thành phố</a>
+<h2>Danh sách thành phố</h2>
+<form>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th>ID</th>
+            <th>Thành phố</th>
+            <th>Quốc gia</th>
+            <th>Chỉnh Sửa</th>
+            <th>Xóa</th>
+
+        </tr>
+        </thead>
+        <th:block th:each="cityinfos: ${cityInfo}">
+            <tr>
+                <td th:text="${cityinfos.cityId}"></td>
+                <td><a th:href="@{/cityinfo/view/__${cityinfos.cityId}__}" th:text="${cityinfos.cityName}"></a></td>
+                <td th:text="${cityinfos.countryName.countryName}"></td>
+                <td><a th:href="@{/cityinfo/edit/__${cityinfos.cityId}__}" class="btn btn-success" role="button">Chỉnh Sửa</a></td>
+                <td><a th:href="@{/cityinfo/delete/__${cityinfos.cityId}__}" class="btn btn-success" role="button">Xóa</a></td>
+            </tr>
+        </th:block>
+    </table>
+</form>
+</body>
+</html>

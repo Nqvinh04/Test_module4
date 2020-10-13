@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Xóa</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<form th:action="@{/cityinfo/delete}" th:object="${cityInfo}" method="post">
+    <h2>Thành Phố: <span th:text="${cityInfo.cityName}"></span></h2>
+    <label for="id"></label><input th:type="hidden" id="id" th:field="${cityInfo.cityId}"/>
+    <div>
+        <label for="cityName">Tên:</label>
+        <label id="cityName" th:text="${cityInfo.cityName}" ></label>
+    </div>
+    <div >
+        <label for="countryName">Quốc gia:</label>
+        <label id="countryName" th:text="${cityInfo.countryName.countryName}" ></label>
+    </div>
+    <div >
+        <label for="acreage">Diện tích:</label>
+        <label id="acreage" th:text="${cityInfo.acreage}" ></label>
+    </div>
+    <div >
+        <label for="population">Dân số:</label>
+        <label id="population" th:text="${cityInfo.population}" ></label>
+    </div>
+    <div >
+        <label for="gdp">GDP:</label>
+        <label id="gdp" th:text="${cityInfo.gdp}" ></label>
+    </div>
+    <div >
+        <label for="description">Giới thiệu:</label>
+        <label id="description" th:text="${cityInfo.description}" ></label>
+    </div>
+    <button class="btn btn-success" role="button"
+            onclick="return confirm('Are you sure?')">Xóa</button>
+</form>
+</body>
+</html>
