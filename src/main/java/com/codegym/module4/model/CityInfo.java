@@ -1,14 +1,10 @@
 package com.codegym.module4.model;
 
-import com.sun.istack.NotNull;
 import lombok.Data;
-import lombok.Value;
-import org.aspectj.bridge.IMessage;
-
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
+
 
 @Entity
 @Data
@@ -28,12 +24,9 @@ public class CityInfo {
 
     private Double acreage;
 
-    @NotNull
-    @Min(value = 10)
+
     private int population;
 
-    @NotNull
-    @Min(value = 100)
     private int gdp;
 
     @NotBlank
